@@ -18,9 +18,9 @@ public class ValidationMethods {
     }
 
     //facem metoda de verificare/validare prin verificarea schimbarii url-ului
-    public void validateElementUrl(WebElement element, String valoare){
-        String actualUrl = "https://www.reddit.com/";
+    public void validateElementUrl(){
+        String actualUrl = "https://reddit.com/";
         String newUrl = driver.getCurrentUrl();
-        Assert.assertNotEquals("EROAREEEEEEEEEEEEEEEEEEEEEEEEEEE",actualUrl,newUrl);
+        Assert.assertNotEquals("EROAREEEEEEEEEEEEEEEEEEEEEEEEEEE",actualUrl, newUrl);
     }
 }

@@ -32,9 +32,9 @@ public class SharedData {
         //adaugam un delay
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
     }
-/*
+
     @After
     public void tearDown(){
         driver.quit();
-    }*/
+    }
 }

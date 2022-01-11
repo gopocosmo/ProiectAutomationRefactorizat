@@ -107,6 +107,7 @@ public class HomePage {
     //search functionality/parameters
     public void searchParameter(String valoare){
         elementMethods.fillElement(searchBarElement, valoare);
+        validationMethods.validateElementUrl();
     }
 
 
