@@ -51,18 +51,52 @@ public class HomePage {
     private WebElement errorMessageElement;
 
     //signup button
-    //searchbar
-    //filters
+    @FindBy(css = "a[class='Z_HUY3BUsGOBOtdmH94ZS _3Wg53T10KuuPmyWOMWsY2F _2iuoyPiKHN3kfOoeIQalDT _10BQ7pjWbeYP63SAPNS8Ts HNozj_dKjQZ59ZsfEegz8 _2nelDm85zKKmuD94NequP0']")
+    private WebElement butonSignUpElement;
 
+    //searchbar
+    @FindBy(id = "header-search-bar")
+    private WebElement searchBarElement;
+
+    //search icon/action(glass)
+    @FindBy(css = "span[class='_2aqH0n-kSzFY7HZZ5GL-Jb']")
+    private WebElement searchGlassElement;
+
+    //filters
+    @FindBy(id = "CountrySort--CountrySortPicker")
+    private WebElement filterCountryElement;
+
+
+
+
+
+    //metode/actiuni
     //click button login
     public void clickButonLogin(){
         elementMethods.clickElement(butonLoginElement);
     }
 
+    //click buton signup
+    public void clickButonSignUp(){
+        elementMethods.clickElement(butonSignUpElement);
+    }
+
+    //click pe search-bar
+    public void clickSearchBar(){
+        elementMethods.clickElement(searchBarElement);
+    }
+
+    //click pe search(action)/glass
+    public void clickSearchGlass(){
+        elementMethods.clickElement(searchGlassElement);
+    }
+
+    //switch to iframe
     public void switchToIframeLogin(){
         frameMethods.switchToIframeLogin(iframeElement);
     }
 
+    //invalid login
     public void invalidLogin(String username, String parola, String mesaj){
         elementMethods.fillElement(loginUsernameElement, username);
         elementMethods.fillElement(loginPasswordElement, parola);
@@ -70,5 +104,10 @@ public class HomePage {
         validationMethods.validateElementMessage(errorMessageElement, mesaj);
     }
 
-    //click buton signup
+    //search functionality/parameters
+    public void searchParameter(String valoare){
+        elementMethods.fillElement(searchBarElement, valoare);
+    }
+
+
 }

@@ -7,6 +7,7 @@ import org.junit.Test;
 public class LoginTest extends SharedData {
     public HomePage homePage;
 
+    //test de ivalid login(username si parola gresite)
     @Test
     public void testAutomat(){
         homePage = new HomePage(driver);
