@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class ElementMethods {
     public WebDriver driver;
 
@@ -21,9 +23,15 @@ public class ElementMethods {
         element.sendKeys(valoare);
     }
 
+    //facem o metoda de cautare a unui string intr-o lista
+    public void findTara(List<WebElement> listElement, String valoare) {
+        for (Integer i = 0; i < listElement.size(); i++) {
+            if (listElement.get(i).getText().equals(valoare)) {
+                listElement.get(i).click();
+                break;
+            }
+        }
 
 
-
-
-
+    }
 }

@@ -13,7 +13,7 @@ public class LoginTest extends SharedData {
         homePage = new HomePage(driver);
 
         homePage.clickButonLogin();
-        homePage.switchToIframeLogin();
+        homePage.switchToIframe();
         homePage.invalidLogin("adi","parola1112","Incorrect username or password");
     }
 }
