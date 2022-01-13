@@ -1,28 +1,16 @@
 package Pages;
 
-import Help.ElementMethods;
-import Help.FrameMethods;
-import Help.ValidationMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
 
-public class HomePage {
-    public WebDriver driver;
-    public ElementMethods elementMethods;
-    public FrameMethods frameMethods;
-    public ValidationMethods validationMethods;
+public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver){
-        this.driver = driver;
-        elementMethods = new ElementMethods(driver);
-        frameMethods = new FrameMethods(driver);
-        validationMethods = new ValidationMethods(driver);
+        super(driver);
         validationMethods.validateTitlePage("Reddit - Dive into anything");
-        PageFactory.initElements(driver,this);
+        acceptCookies();
     }
 
     //iframe
@@ -133,13 +121,13 @@ public class HomePage {
     //search functionality/parameters
     public void searchParameter(String valoare){
         elementMethods.fillElement(searchBarElement, valoare);
-        validationMethods.validateElementUrl("https://reddit.com/");
+        validationMethods.validateUrl("https://reddit.com/");
     }
 
     //aplicare filtru "tara" in lista
     public void introducereTara(String valoare){
         elementMethods.findTara(listaCuTari, valoare);
-        validationMethods.validateElementUrl("https://reddit.com/");
+        validationMethods.validateUrl("https://reddit.com/");
     }
 
     //invalid register
@@ -148,8 +136,7 @@ public class HomePage {
         elementMethods.clickElement(continueButtonElement);
         elementMethods.fillElement(signUpUsernameElement, username);
         elementMethods.fillElement(signUpPasswordElement, parola);
+        elementMethods.scrollIntoViewElement(confirmSignUpButtonElement);
         elementMethods.clickElement(confirmSignUpButtonElement);
     }
-
-
 }

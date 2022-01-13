@@ -15,11 +15,13 @@ public class SharedData {
     @Before
     public void setUp(){
         //incarcam locatia driver-ului
-        System.setProperty("webdriver.chrome.driver","C:\\Automation\\ChromeDriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
 
         //disable pop-up allow-notifications
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
+        //remove info related to Chrome is being controlled by automation software
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 
         //deschidem chrome browser
         driver = new ChromeDriver(options);
