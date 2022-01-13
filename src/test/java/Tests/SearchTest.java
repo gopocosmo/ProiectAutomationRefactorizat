@@ -16,5 +16,7 @@ public class SearchTest  extends SharedData {
         homePage.clickSearchBar();
         homePage.searchParameter("The Witcher 3");
         homePage.clickSearchGlass();
+
+        //tre sa validezi ca rezultatele contin ceea ce ai cautat
     }
 }

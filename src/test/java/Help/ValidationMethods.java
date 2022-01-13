@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ValidationMethods {
-    WebDriver driver;
+    public WebDriver driver;
 
     public ValidationMethods(WebDriver driver) {
         this.driver = driver;
@@ -18,9 +18,13 @@ public class ValidationMethods {
     }
 
     //facem metoda de verificare/validare prin verificarea schimbarii url-ului
-    public void validateElementUrl(){
-        String actualUrl = "https://reddit.com/";
+    public void validateElementUrl(String expected){
         String newUrl = driver.getCurrentUrl();
-        Assert.assertNotEquals("EROAREEEEEEEEEEEEEEEEEEEEEEEEEEE",actualUrl, newUrl);
+        Assert.assertNotEquals("EROAREEEEEEEEEEEEEEEEEEEEEEEEEEE",expected, newUrl);
+    }
+
+    public void validateTitlePage(String expected){
+        String actualUrl = driver.getTitle();
+        Assert.assertEquals(expected,actualUrl);
     }
 }

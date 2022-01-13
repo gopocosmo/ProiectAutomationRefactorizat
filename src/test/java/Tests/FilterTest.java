@@ -12,7 +12,10 @@ public class FilterTest extends SharedData {
     public void testAutomat(){
         homePage = new HomePage(driver);
 
+        homePage.acceptCookies();
         homePage.clickCountryFilter();
         homePage.introducereTara("Canada");
+
+        //tre sa validezi ca s-a modificat pe Canada
     }
 }

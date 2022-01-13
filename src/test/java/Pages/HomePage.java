@@ -16,93 +16,75 @@ public class HomePage {
     public FrameMethods frameMethods;
     public ValidationMethods validationMethods;
 
-
     public HomePage(WebDriver driver){
         this.driver = driver;
         elementMethods = new ElementMethods(driver);
         frameMethods = new FrameMethods(driver);
         validationMethods = new ValidationMethods(driver);
+        validationMethods.validateTitlePage("Reddit - Dive into anything");
         PageFactory.initElements(driver,this);
     }
 
     //iframe
     @FindBy(xpath = "//iframe[@class='_25r3t_lrPF3M6zD2YkWvZU']")
     private WebElement iframeElement;
+    @FindBy(xpath = "//button[contains(text(),'Accept all')]")
+    private WebElement acceptCookieElement;
 
     //login elements
     //login button
     @FindBy(css = "a[class='_3Wg53T10KuuPmyWOMWsY2F _2iuoyPiKHN3kfOoeIQalDT _2tU8R9NTqhvBrhoNAXWWcP HNozj_dKjQZ59ZsfEegz8 _2nelDm85zKKmuD94NequP0']")
     private WebElement butonLoginElement;
-
     //login username filed
     @FindBy(id = "loginUsername")
     private WebElement loginUsernameElement;
-
     //login parola field
     @FindBy(id = "loginPassword")
     private  WebElement loginPasswordElement;
-
     //buton de login/submit
     @FindBy(css = ".m-small-margin button[type='submit']")
     private WebElement submitButtonElement;
-
     //mesaj de eroare
     @FindBy(xpath = "//div[contains(text(),'Incorrect username or password')]")
     private WebElement errorMessageElement;
-
 
     //signup elements
     //signup button
     @FindBy(css = "a[class='Z_HUY3BUsGOBOtdmH94ZS _3Wg53T10KuuPmyWOMWsY2F _2iuoyPiKHN3kfOoeIQalDT _10BQ7pjWbeYP63SAPNS8Ts HNozj_dKjQZ59ZsfEegz8 _2nelDm85zKKmuD94NequP0']")
     private WebElement butonSignUpElement;
-
     @FindBy(xpath = "//iframe[@class='_25r3t_lrPF3M6zD2YkWvZU']")
     private WebElement iframeEmailElement;
-
     //registration email filed
     @FindBy(id = "regEmail")
     private WebElement signUpEmailElement;
-
     //buton de continue
     @FindBy(css = "button[data-step='email']")
     private WebElement continueButtonElement;
-
     //signup username field
     @FindBy(id = "regUsername")
     private WebElement signUpUsernameElement;
-
     //signup parola field
     @FindBy(id = "regPassword")
     private WebElement signUpPasswordElement;
-
     //buton confirmare signup
     @FindBy(css = "button[data-step='username-and-password']")
     private WebElement confirmSignUpButtonElement;
-
 
     //search elements
     //searchbar
     @FindBy(id = "header-search-bar")
     private WebElement searchBarElement;
-
     //search icon/action(glass)
     @FindBy(css = "span[class='_2aqH0n-kSzFY7HZZ5GL-Jb']")
     private WebElement searchGlassElement;
-
 
     //filter elements
     //country filter
     @FindBy(id = "CountrySort--CountrySortPicker")
     private WebElement filterCountryElement;
-
     //filtru lista cu tari
     @FindBy(css = "button[class='_10K5i7NW6qcm-UoCtpB3aK _3LwUIE7yX7CZQKmD2L87vf _3LjUrsRA9MkUFLGB6ZCWaX _1oYEKCssGFjqxQ9jJMNj5G']")
     private List<WebElement> listaCuTari;
-
-
-
-
-
 
 
     //metode/actiuni
@@ -136,6 +118,10 @@ public class HomePage {
         frameMethods.switchToIframeLogin(iframeElement);
     }
 
+    public void acceptCookies(){
+        elementMethods.clickElement(acceptCookieElement);
+    }
+
     //invalid login
     public void invalidLogin(String username, String parola, String mesaj){
         elementMethods.fillElement(loginUsernameElement, username);
@@ -147,14 +133,13 @@ public class HomePage {
     //search functionality/parameters
     public void searchParameter(String valoare){
         elementMethods.fillElement(searchBarElement, valoare);
-        validationMethods.validateElementUrl();
+        validationMethods.validateElementUrl("https://reddit.com/");
     }
 
     //aplicare filtru "tara" in lista
     public void introducereTara(String valoare){
-        elementMethods.clickElement(filterCountryElement);
         elementMethods.findTara(listaCuTari, valoare);
-        validationMethods.validateElementUrl();
+        validationMethods.validateElementUrl("https://reddit.com/");
     }
 
     //invalid register

@@ -25,9 +25,9 @@ public class ElementMethods {
 
     //facem o metoda de cautare a unui string intr-o lista
     public void findTara(List<WebElement> listElement, String valoare) {
-        for (Integer i = 0; i < listElement.size(); i++) {
-            if (listElement.get(i).getText().equals(valoare)) {
-                listElement.get(i).click();
+        for (WebElement webElement : listElement) {
+            if (webElement.getText().equals(valoare)) {
+                webElement.click();
                 break;
             }
         }
