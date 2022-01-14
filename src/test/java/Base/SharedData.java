@@ -33,7 +33,7 @@ public class SharedData {
         driver.manage().window().maximize();
 
         //adaugam un delay
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @After

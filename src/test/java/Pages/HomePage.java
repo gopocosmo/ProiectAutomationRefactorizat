@@ -3,6 +3,10 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 import java.util.List;
 
 public class HomePage extends BasePage {
@@ -115,6 +119,7 @@ public class HomePage extends BasePage {
         elementMethods.fillElement(loginUsernameElement, username);
         elementMethods.fillElement(loginPasswordElement, parola);
         elementMethods.clickElement(submitButtonElement);
+        waitError(errorMessageElement);
         validationMethods.validateElementMessage(errorMessageElement, mesaj);
     }
 
@@ -138,5 +143,9 @@ public class HomePage extends BasePage {
         elementMethods.fillElement(signUpPasswordElement, parola);
         elementMethods.scrollIntoViewElement(confirmSignUpButtonElement);
         elementMethods.clickElement(confirmSignUpButtonElement);
+    }
+
+    public void waitError(WebElement element){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(element));
     }
 }
