@@ -126,13 +126,11 @@ public class HomePage extends BasePage {
     //search functionality/parameters
     public void searchParameter(String valoare){
         elementMethods.fillElement(searchBarElement, valoare);
-        validationMethods.validateUrl("https://reddit.com/");
     }
 
     //aplicare filtru "tara" in lista
     public void introducereTara(String valoare){
         elementMethods.findTara(listaCuTari, valoare);
-        validationMethods.validateUrl("https://reddit.com/");
     }
 
     //invalid register
